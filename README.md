@@ -6,6 +6,11 @@
 * Ionic instal 
 * Active internet connection
 
+## Benefits of this app
+* A realtime statistics detailed graphs for how much the company earn in a day, month, year.
+* Acces to how much your employees made in your enterprise's earnings 
+* Assign and/ or reassign a client to one of your workers in order to improve your customer's follow-up
+
 ## Development server
 
 Run `ng serve` or `ionic serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
