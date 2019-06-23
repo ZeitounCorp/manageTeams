@@ -1,41 +1,295 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-buttons slot="primary">
+       <ion-button *ngIf="filterActivated" (click)="reload()">
+        <ion-icon size="large" color="warning" name="md-refresh"></ion-icon>
+      </ion-button>
+      <ion-button (click)="filterSheet()">
+        <ion-icon size="large" color="danger" name="md-color-filter"></ion-icon>
+      </ion-button>
+      <ion-button (click)="createClient()">
+        <ion-icon size="large" color="success" name="md-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Tab One
+      Main Board
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+<ion-content *ngIf="!Clients">
+  <ion-searchbar
+    showCancelButton
+    cancelButtonText="Annuler"
+    placeholder="Chercher un client"
+  ></ion-searchbar>
+  <div class="ion-padding custom-skeleton">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text
+        animated
+        style="width: 27px; height: 27px"
+        slot="start"
+      ></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+   <ion-list>
+    <ion-list-header>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text
+        animated
+        style="width: 27px; height: 27px"
+        slot="start"
+      ></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="Clients.length == 0">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="12" size-sm="12" size-lg="12">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> Rien à afficher pour l'instant </ion-card-title>
+            <ion-card-subtitle>Commencez en ajoutant un nouveau client</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Si rien ne s'affiche recharger la page
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="Clients && Clients.length > 0 ">
+  <ion-row>
+    <ion-col size-sm="12" size-xs="12" size-lg="9">
+      <ion-searchbar
+        showCancelButton
+        cancelButtonText="Annuler"
+        placeholder="Chercher un client par sa compagnie"
+        *ngIf="this.Types === 'Par Compagnie'" 
+        (ionInput)="getClientByComp($event)" 
+      ></ion-searchbar>
+      <ion-searchbar
+        showCancelButton
+        cancelButtonText="Annuler"
+        placeholder="Chercher un client par ses HashTags"
+        *ngIf="this.Types === 'Par HashTags'" 
+        (ionInput)="getClientByHash($event)" 
+      ></ion-searchbar>
+    </ion-col>
+    <ion-col size-sm="12" size-xs="12" size-lg="3">
+      <ion-segment mode="md" (ionChange)="segmentChanged($event)"  [(ngModel)]="Types" color="secondary">
+        <ion-segment-button mode="md" value="Par Compagnie">
+          <ion-label>Par Compagnie</ion-label>
+        </ion-segment-button>
+        <ion-segment-button mode="md" value="Par HashTags">
+          <ion-label>Par HashTags</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size-sm="12"
+        size-xs="12"
+        size-lg="4"
+        *ngFor="let cli of Clients"
+      >
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-icon
+                size="large"
+                color="purple"
+                name="md-journal"
+                slot="start"
+              ></ion-icon>
+              Société/ Nom: {{ cli.Company }}
+            </ion-item>
+            <br />
+             <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-people"
+                  slot="start"
+                ></ion-icon>
+                Nom: {{ cli.Name }}
+              </ion-item>
+              <br />
+            <ion-item lines="none">
+              <ion-icon
+                size="large"
+                color="purple"
+                name="ios-call"
+                slot="start"
+              ></ion-icon>
+              N° téléphone : {{ cli.phoneNumber }}
+              <br />
+              N° téléphone Société: {{ cli.phoneNumberSociety }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon
+                size="large"
+                color="purple"
+                name="md-navigate"
+                slot="start"
+              ></ion-icon>
+              Adresse: {{ cli.Address }}
+              <br />
+              Pays: {{ cli.Country }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon
+                size="large"
+                color="purple"
+                name="md-calendar"
+                slot="start"
+              ></ion-icon>
+              Création du Profil:
+              {{ cli.createdAt | date: "dd/MM/yyyy à HH:mm" }}
+            </ion-item>
+            <br />
+            <ion-item lines="none" text-wrap>
+              <ion-icon
+                size="large"
+                color="danger"
+                name="md-pricetags"
+                slot="start"
+              ></ion-icon>
+              <ion-chip
+                outline
+                color="secondary"
+                *ngFor="let tag of cli.eachWord"
+              >
+                <ion-label color="secondary"> {{ tag }}</ion-label>
+              </ion-chip>
+              <br />
+            </ion-item>
+          </ion-card-content>
+          <ion-img
+            [src]="cli.profilePic"
+            *ngIf="cli.profilePic !== 'NO PIC PROVIDED YET'"
+          ></ion-img>
+          <div
+            style="background: #0cd1e8; height: 10vh; width: 100%;"
+            *ngIf="cli.profilePic === 'NO PIC PROVIDED YET'"
+          ></div>
+          <ion-fab vertical="top" horizontal="end" slot="fixed">
+            <ion-fab-button color="secondary" (click)="see(cli)">
+              <ion-icon name="md-eye"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-item color="purple">
+      <ion-icon item-start name="apps"></ion-icon>
+      <ion-title>Connexion Requise</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row align-items-center>
+    <ion-col align-self-center>
+      <ion-card class="welcome-card">
+        <ion-img src="/assets/shapes.svg"></ion-img>
+        <ion-card-header>
+          <ion-card-subtitle>Identifiez Vous</ion-card-subtitle>
+          <ion-card-title
+            >Bienvenue sur Keepflash Client Management
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              [(ngModel)]="user.email"
+              name="email"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mot De Passe</ion-label>
+            <ion-input
+              type="password"
+              [(ngModel)]="user.password"
+              name="password"
+            ></ion-input>
+          </ion-item>
+        </ion-card-content>
+         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="login(user)" color='purple' [disabled]="!user.password" type="submit">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

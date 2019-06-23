@@ -1,0 +1,270 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon size="large" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+       <ion-button (click)="getMore()">
+        <ion-icon size="large" name="ios-more"></ion-icon>
+      </ion-button>
+      <ion-button (click)="edit()">
+        <ion-icon size="large" name="md-create"></ion-icon>
+      </ion-button>
+      <ion-button (click)="printPdfC()">
+        <ion-icon size="large" name="md-print"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!cli">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </ion-title>
+    <ion-title *ngIf="cli"> Profil de {{ cli.Company }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cli || !userIncharge">
+  <div class="splash-bg"></div>
+  <div class="ion-padding custom-skeleton">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text
+        animated
+        style="width: 27px; height: 27px"
+        slot="start"
+      ></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="cli && userIncharge">
+  <div class="splash-bg">
+    <ion-grid>
+      <ion-row>
+        <ion-col center text-center>
+          <img
+            [src]="cli.profilePic"
+            class="btn"
+            *ngIf="cli.profilePic !== 'NO PIC PROVIDED YET'"
+          />
+          <img
+            src="/assets/avatar-placeholder.png"
+            class="btn"
+            *ngIf="cli.profilePic == 'NO PIC PROVIDED YET'"
+          />
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col size="12" size-sm></ion-col>
+        <ion-col align-self-center size="12" size-sm>
+          <ion-card>
+            <ion-card-header text-center text-wrap>
+              <h1 style="color: #520606;">Informations du Client</h1>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item lines="none" [style.color]="checkActiveUser(cli)">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-checkmark-circle-outline"
+                  slot="start"
+                ></ion-icon>
+                Statut: {{ cli.Status }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-funnel"
+                  slot="start"
+                ></ion-icon>
+                Rôle/ Fonction: {{ cli.Fonction }}
+              </ion-item>
+              <br />
+                <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-people"
+                  slot="start"
+                ></ion-icon>
+                Nom: {{ cli.Name }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-journal"
+                  slot="start"
+                ></ion-icon>
+                Société/ Nom: {{ cli.Company }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-flag"
+                  slot="start"
+                ></ion-icon>
+                Langue: {{ cli.Langue }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="ios-call"
+                  slot="start"
+                ></ion-icon>
+                N° téléphone : {{ cli.phoneNumber }}
+                <br />
+                N° téléphone Société: {{ cli.phoneNumberSociety }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-navigate"
+                  slot="start"
+                ></ion-icon>
+                Adresse: {{ cli.Address }}
+                <br />
+                Pays: {{ cli.Country }}
+              </ion-item>
+              <br />
+              <ion-item lines="none" *ngIf="cli.currency && cli.pricing">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="logo-euro"
+                  slot="start"
+                ></ion-icon>
+                Prix: {{ cli.currency }} {{ cli.pricing }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-calendar"
+                  slot="start"
+                ></ion-icon>
+                Création du Profil:
+                {{ cli.createdAt | date: "dd/MM/yyyy à HH:mm" }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-contacts"
+                  slot="start"
+                ></ion-icon>
+                Client ajouté par:
+                {{ userIncharge.username }}
+              </ion-item>
+              <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-information-circle-outline"
+                  slot="start"
+                ></ion-icon>
+               Notes:
+                {{ cli.Notes }}
+              </ion-item>
+              <br>
+               <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="purple"
+                  name="md-link"
+                  slot="start"
+                ></ion-icon>
+                Référence client: {{ cli.runnerID }}
+              </ion-item>
+               <br />
+              <ion-item lines="none">
+                <ion-icon
+                  size="large"
+                  color="danger"
+                  name="md-pricetags"
+                  slot="start"
+                ></ion-icon>
+                <ion-chip
+                  outline
+                  color="secondary"
+                  *ngFor="let tag of cli.eachWord"
+                >
+                  <ion-label color="secondary"> {{ tag }}</ion-label>
+                </ion-chip>
+                <br />
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-sm></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<!--  -->

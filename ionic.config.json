@@ -1,5 +1,7 @@
 {
   "name": "Keepflash_Management",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

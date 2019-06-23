@@ -1,0 +1,337 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon size="large" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+     <ion-buttons slot="end">
+      <ion-item>
+        <ion-label>Modifier/ Ajouter un prix</ion-label>
+        <ion-checkbox
+          color="secondary"
+          slot="end"
+          [(ngModel)]="isChecked"
+        ></ion-checkbox>
+      </ion-item>
+    </ion-buttons>
+    <ion-title *ngIf="!cli">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </ion-title>
+    <ion-title *ngIf="cli"> Éditer le profil de {{ cli.Company }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+       <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Nom Complet: </ion-label>
+              <ion-input [(ngModel)]="cli.Name" name="nameis"></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                1
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Fonction: </ion-label>
+              <ion-input [(ngModel)]="cli.Fonction" name="func"></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                2
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">N° de téléphone: </ion-label>
+              <ion-input
+                [(ngModel)]="cli.phoneNumber"
+                name="phone"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                3
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating"
+                >Company:
+              </ion-label>
+              <ion-input [(ngModel)]="cli.Company" name="sct"></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                4
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Adresse: </ion-label>
+              <ion-input
+                [(ngModel)]="cli.Address"
+                name="address"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                5
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Pays: </ion-label>
+              <ion-input
+                [(ngModel)]="cli.Country"
+                name="country"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                6
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">N° téléphone Société: </ion-label>
+              <ion-input
+                [(ngModel)]="cli.phoneNumberSociety"
+                name="phoneS"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                7
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Langue: </ion-label>
+              <ion-select
+                [(ngModel)]="cli.Langue"
+                name="lang"
+                okText="Valider"
+                cancelText="Annuler"
+                placeholder="Select One"
+              >
+                <ion-select-option value="HE">HE</ion-select-option>
+                <ion-select-option value="FR">FR</ion-select-option>
+                <ion-select-option value="US">US</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                8
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">#KeyWords: </ion-label>
+              <ion-input
+                [(ngModel)]="cli.Keywords"
+                name="keywords"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                9
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Notes: </ion-label>
+              <ion-textarea [(ngModel)]="cli.Notes" name="notes"></ion-textarea>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                10
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Status: </ion-label>
+              <ion-select
+                [(ngModel)]="actualStatus"
+                name="type"
+                okText="Valider"
+                cancelText="Annuler"
+                placeholder="Select One"
+              >
+                <ion-select-option value="En Cours">En cours</ion-select-option>
+                <ion-select-option value="Signé">Signé</ion-select-option>
+                <ion-select-option value="Perdu">Perdu</ion-select-option>
+                <ion-select-option value="Résilié">Résilié</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-lg="4" *ngIf="isChecked">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                11
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="floating">Devise: </ion-label>
+                 <ion-select
+                [(ngModel)]="actualCurrency"
+                name="curr"
+                okText="Valider"
+                cancelText="Annuler"
+                placeholder="Select One"
+              >
+                <ion-select-option value="NIS">NIS ₪</ion-select-option>
+                <ion-select-option value="USD">USD $</ion-select-option>
+                <ion-select-option value="EUR">EUR €</ion-select-option>
+              </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="floating">Prix: </ion-label>
+                  <ion-input
+                    [(ngModel)]="actualPricing"
+                    name="price"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button
+      color="purple"
+      (click)="modify(cli)"
+      [disabled]="
+        !cli.Status ||
+        !cli.Company ||
+        !cli.phoneNumber ||
+        !cli.phoneNumberSociety ||
+        !cli.Fonction
+      "
+    >
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -7,10 +7,10 @@ import { Tab3Page } from './tab3.page';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
+    IonicModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }])
+    RouterModule.forChild([{ path: "", component: Tab3Page }])
   ],
   declarations: [Tab3Page]
 })

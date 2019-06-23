@@ -1,9 +1,176 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="signOut()">
+        <ion-icon size="large" name="log-out"></ion-icon>
+        <ion-title>Se Déconnecter</ion-title>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!userIncharge">
+      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    </ion-title>
+    <ion-title *ngIf="userIncharge">
+      Réglages de {{ userIncharge.username }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content *ngIf="!userIncharge">
+  <div class="ion-padding custom-skeleton">
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text
+        animated
+        style="width: 27px; height: 27px"
+        slot="start"
+      ></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="userIncharge">
+  <ion-grid>
+    <ion-row>
+      <ion-col center text-center>
+        <img
+          [src]="userIncharge.profilePic"
+          class="btn"
+          *ngIf="userIncharge.profilePic"
+        />
+        <img
+          src="/assets/avatar-placeholder.png"
+          class="btn"
+          *ngIf="!userIncharge.profilePic"
+        />
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col size="12" size-sm></ion-col>
+      <ion-col align-self-center size="12" size-sm>
+        <ion-card-header text-center text-wrap>
+          <h1 style="color: #884992;">Vos Informations</h1>
+        </ion-card-header>
+        <ion-card>
+         <ion-segment mode="md" (ionChange)="segmentChanged($event)"  [(ngModel)]="Types" color="secondary">
+          <ion-segment-button mode="md" value="Profil">
+          <ion-label>Profil</ion-label>
+         </ion-segment-button>
+            <ion-segment-button mode="md" value="Historique">
+            <ion-label>Historique</ion-label>
+         </ion-segment-button>
+          </ion-segment>
+          <ion-card-content *ngIf="this.Types === 'Profil'">
+            <ion-item lines="none">
+              <ion-icon color="purple" name="md-mail" slot="start"></ion-icon>
+              Email: {{ userIncharge.email }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon color="purple" name="finger-print" slot="start"></ion-icon>
+              Unique ID: {{ userIncharge.runnerID }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon color="purple" name="md-locate" slot="start"></ion-icon>
+              Nom: {{ userIncharge.lastName }}
+              <br />
+              Prénom: {{ userIncharge.firstName }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon color="purple" name="md-link" slot="start"></ion-icon>
+              Personal ID: {{ userIncharge.identityNB }}
+            </ion-item>
+            <br />
+            <ion-item lines="none">
+              <ion-icon color="purple" name="md-calendar" slot="start"></ion-icon>
+              Création du Profil:
+              {{ userIncharge.createdAt | date: "dd/MM/yyyy à HH:mm" }}
+            </ion-item>
+          </ion-card-content>
+          <ion-card-content *ngIf="this.Types === 'Historique' && myClients.length > 0">
+            <ion-item lines="none">
+                <ion-icon color="secondary" name="md-albums" slot="start"></ion-icon>
+                Nombre de clients: {{ nbOfClients }}
+              </ion-item>
+            <ion-list lines="none" *ngFor="let cli of myClients">
+              <ion-item-sliding>
+              <ion-item lines="none">
+                <ion-icon color="purple" name="md-people" slot="start"></ion-icon>
+                Nom: {{ cli.Name }}
+                <br />
+                Ajouté le: {{ cli.createdAt | date: "dd/MM/yyyy à HH:mm" }}
+              </ion-item>
+              <ion-item-options side="end">
+                <ion-item-option color="secondary" (click)="see(cli)">
+                  <ion-icon id="open" name="md-information-circle"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+          <ion-card-content *ngIf="this.Types === 'Historique' && myClients.length == 0">
+            <ion-item lines="none">
+                <ion-icon color="purple" name="close" slot="start"></ion-icon>
+                Rien à afficher pour l'instant
+              </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-sm></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

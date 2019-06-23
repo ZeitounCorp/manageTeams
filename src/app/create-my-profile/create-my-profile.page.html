@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bonjour {{ preUsername }},</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm>
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                1
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Nom de Famille</ion-label>
+              <ion-input [(ngModel)]="runner.lastName" name="name"></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-sm>
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                2
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Prénom</ion-label>
+              <ion-input
+                [(ngModel)]="runner.firstName"
+                name="fstName"
+              ></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-sm>
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title>
+              <h1
+                style="text-align: center; font-weight: bold; font-size: 126px; align-self: center; color: rgb(111, 29, 29);"
+              >
+                3
+              </h1>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">ID</ion-label>
+              <ion-input [(ngModel)]="runner.id" name="id"></ion-input>
+            </ion-item>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-sm>
+        <ion-card class="welcome-card">
+          <ion-card-content>
+            <div *ngIf="empty">
+              <ion-row>
+                <ion-col center text-center>
+                  <ion-button
+                    icon-only
+                    color="purple"
+                    id="butn"
+                    class="btn"
+                    (click)="file.click()"
+                    round
+                  >
+                    <ion-icon name="camera" id="camera"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div>
+              <ion-row>
+                <ion-col center text-center>
+                  <img
+                    [src]="runner.profilePicture"
+                    class="btn"
+                    *ngIf="!empty"
+                  />
+                </ion-col>
+              </ion-row>
+            </div>
+            <div>
+              <ion-row>
+                <ion-col center text-center>
+                  <input
+                    type="file"
+                    #file
+                    id="my_file"
+                    (change)="detectFiles($event)"
+                  />
+                </ion-col>
+              </ion-row>
+            </div>
+            <h2 style="text-align: left;">
+              Photo de Profil
+            </h2>
+          </ion-card-content>
+          <ion-img src="/assets/shapes.svg"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button
+      color="purple"
+      (click)="create(runner)"
+      [disabled]="!runner.lastName || !runner.firstName || !runner.id"
+    >
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

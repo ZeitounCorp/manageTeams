@@ -1,11 +1,65 @@
 // http://ionicframework.com/docs/theming/
-@import '~@ionic/angular/css/core.css';
-@import '~@ionic/angular/css/normalize.css';
-@import '~@ionic/angular/css/structure.css';
-@import '~@ionic/angular/css/typography.css';
-@import '~@ionic/angular/css/display.css';
-@import '~@ionic/angular/css/padding.css';
-@import '~@ionic/angular/css/float-elements.css';
-@import '~@ionic/angular/css/text-alignment.css';
-@import '~@ionic/angular/css/text-transformation.css';
-@import '~@ionic/angular/css/flex-utils.css';
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.goingOn {
+  color: orange !important;
+  ion-icon {
+    color: orange !important;
+  }
+}
+.checked {
+  color: green !important;
+  ion-icon {
+    color: green !important;
+  }
+}
+.gone {
+  color: red !important;
+  ion-icon {
+    color: red !important;
+  }
+}
+
+.letitgo {
+  color: brown !important;
+  ion-icon {
+    color: brown !important;
+  }
+}
+
+.filterTimeDay {
+  color: rgb(255, 162, 0) !important;
+  ion-icon {
+    color: rgb(255, 162, 0) !important;
+  }
+}
+
+.filterCurrency {
+   color: rgb(0, 72, 255) !important;
+  ion-icon {
+    color: rgb(0, 72, 255) !important;
+  }
+}
+
+.filterTimeYear {
+  color: rgb(0, 152, 35) !important;
+  ion-icon {
+    color: rgb(0, 152, 35) !important;
+  }
+}
+
+.filterTimeMonth {
+  color: rgb(100, 0, 255) !important;
+  ion-icon {
+    color: rgb(100, 0, 255) !important;
+  }
+}

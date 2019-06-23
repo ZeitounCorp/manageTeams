@@ -1,9 +1,85 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="getTimeFilter()">
+        <ion-icon size="large" name="md-funnel"></ion-icon>
+      </ion-button>
+      <ion-button (click)="ngOnInit()">
+        <ion-icon size="large" name="md-refresh-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Tab Two
+      Stats
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content [hidden]="!showGraph">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="12" size-sm="12" size-lg="6">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> Somme générée Aujourd'hui </ion-card-title>
+            <ion-card-subtitle>Date: {{ currentDispD }} </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #dailyCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+       <ion-col size-xs="12" size-sm="12" size-lg="6">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title *ngIf="currentDisplayMonth"> Somme générée en {{ currentDisplayMonth }} </ion-card-title>
+            <ion-skeleton-text *ngIf="!currentDisplayMonth" animated style="width: 100%"></ion-skeleton-text>
+            <ion-card-subtitle>Devise: {{ currency }} </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #monthlyCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+       <ion-col size-xs="12" size-sm="12" size-lg="6">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> Somme générée en {{ currentDisplayYear }} </ion-card-title>
+            <ion-card-subtitle>Devise: {{ currency }} </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #yearlyCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+       <ion-col size-xs="12" size-sm="12" size-lg="6">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> État client général  </ion-card-title>
+            <ion-card-subtitle>Année: {{ currentDisplayYear }} </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #ratioCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content [hidden]="showGraph">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="12" size-sm="12" size-lg="12">
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-title> Rien à afficher pour l'instant </ion-card-title>
+            <ion-card-subtitle>Revenez prochainement</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Si rien ne s'affiche recharger la page avec le boutton refresh sur la navBar
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
