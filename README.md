@@ -2,8 +2,8 @@
 ## Creation of an app to manage teams and tasks
 
 # Requirements
-* Node and npm install
-* Ionic instal 
+* Node and npm installed
+* Ionic installed
 * Active internet connection
 
 ## Benefits of this app
