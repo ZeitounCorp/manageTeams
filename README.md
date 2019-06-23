@@ -8,7 +8,7 @@
 
 ## Benefits of this app
 * A realtime statistics detailed graphs for how much the company earn in a day, month, year.
-* Acces to how much your employees made in your enterprise's earnings 
+* Acces to how your employees are effective in your enterprise's earnings, yields
 * Assign and/ or reassign a client to one of your workers in order to improve your customer's follow-up
 
 ## Development server
